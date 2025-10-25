@@ -8,9 +8,9 @@ interface tagProps{
 
 function Tag(props : tagProps){
     return <>
-        <button className={`${props.tagStyle.textColor} ${props.tagStyle.bgColor} pl-1.25 pr-1.25 pt-1 pb-1 rounded-sm`}>
+        <div className={`${props.tagStyle.textColor} ${props.tagStyle.bgColor} pl-1.25 pr-1.25 pt-1 pb-1 rounded-sm`}>
             {props.tagName}
-        </button>
+        </div>
     </>
 }
 
