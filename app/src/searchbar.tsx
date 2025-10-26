@@ -8,7 +8,6 @@ interface searchCallback {
 
 function Search(props : searchCallback){
     const [searchTerm, setSearchTerm] = useState('');
-    const lockedCSS = "border w-full p-4 rounded-md brightness 90%"
 
     const handleSubmission = (e : React.FormEvent)=>{
         if (props.freeze){return}
