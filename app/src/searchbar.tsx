@@ -8,6 +8,8 @@ interface searchCallback {
 
 function Search(props : searchCallback){
     const [searchTerm, setSearchTerm] = useState('');
+    const lockedCSS = "border w-full p-4 rounded-md brightness 90%"
+
     const handleSubmission = (e : React.FormEvent)=>{
         if (props.freeze){return}
         e.preventDefault();
@@ -18,9 +20,11 @@ function Search(props : searchCallback){
         }
     }
 
-    return(<div className="flex flex-1 place-content-stretch m-16 rounded-md">
+    const placeHolderText = (props.freeze)? "Please wait..." : "tourist attractions"
+    console.log(props.freeze)
+    return(<div className="flex flex-1 place-content-stretch m-16 rounded-full">
         <form action="" className="w-full" onSubmit={handleSubmission}>
-            <input type="text" id='search' placeholder="Tourist Attractions" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} className="border w-full p-4 rounded-md"/>
+            <input type="text" id='search' placeholder={placeHolderText} value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} className="border w-full p-4 rounded-full" disabled={props.freeze}/>
         </form>
     </div>)
 }

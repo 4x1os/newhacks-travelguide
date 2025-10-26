@@ -10,6 +10,14 @@ import australiaImage from "./assets/pexels-patrick-995764.jpg"
 import Search from "./searchbar"
 import Attraction from "./attractioncard"
 
+import { Roboto } from 'next/font/google';
+const customFont = Roboto({
+  weight: ['100', '300'], // Specify the weights you plan to use
+  subsets: ['latin'],
+  display: 'swap', // Recommended for better performance
+});
+
+
 interface AttractionData {
     Title: string;
     Location: string; // Assuming Location exists based on earlier context
@@ -29,12 +37,14 @@ function SelectPage(){
 
     const setPromptHandler = async(prompt: string)=>{
         try {
+            setLocked(true)
             const encodedPrompt = encodeURIComponent(prompt);
             const apiUrl = `https://newhacks-travel-api.vercel.app/testapi/?key_project=${selected}&prompt=${encodedPrompt}`;
             const response = await fetch(apiUrl);
             console.log(response)
             if (!response.ok) {
                 // If FastAPI returned 404/500, throw an error
+                setLocked(false)
                 throw new Error(`API returned status ${response.status}: ${response.statusText}`);
             }
 
@@ -48,6 +58,7 @@ function SelectPage(){
 
         } catch (err) {
             console.error("API Call Failed:", err);
+            setLocked(false)
         }
     }
 
@@ -56,7 +67,7 @@ function SelectPage(){
 
 
     return (<div className="center m-20">
-        <h1 className="text-black-500 mb-10 text-4xl"> {(selected) ? headerTextSelected : headerTextSelect}</h1>
+        <h1 className={`${customFont.className} text-5xl m-12`}> {(selected) ? headerTextSelected : headerTextSelect}</h1>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-6">
             <Card title="Canada" image={canadaImage} tags={["Budget"]} onCardSelect={onCardSelectHandler} selectedCountry={selected}/>
             <Card title="Japan" image={japanImage} tags={["Budget", "Hot", "Crowded", "Urban"]} onCardSelect={onCardSelectHandler} selectedCountry={selected}/>

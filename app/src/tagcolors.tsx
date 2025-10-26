@@ -4,12 +4,12 @@ export interface TagStyle {
 }
 
 const TAG_PALETTE: TagStyle[] = [
-    { textColor: "text-slate-700", bgColor: "bg-blue-100" },
-    { textColor: "text-slate-700", bgColor: "bg-green-100" },
-    { textColor: "text-slate-700", bgColor: "bg-purple-100" },
-    { textColor: "text-slate-700", bgColor: "bg-yellow-100" },
-    { textColor: "text-slate-700", bgColor: "bg-pink-100" },
-    { textColor: "text-slate-700", bgColor: "bg-indigo-100" },
+    { textColor: "text-slate-900", bgColor: "bg-blue-400" },
+    { textColor: "text-slate-900", bgColor: "bg-green-400" },
+    { textColor: "text-slate-900", bgColor: "bg-purple-400" },
+    { textColor: "text-slate-900", bgColor: "bg-yellow-400" },
+    { textColor: "text-slate-900", bgColor: "bg-pink-400" },
+    { textColor: "text-slate-900", bgColor: "bg-indigo-400" },
 ];
 
 const getRandomTagStyle = (): TagStyle => {
