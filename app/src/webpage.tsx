@@ -51,6 +51,7 @@ function SelectPage(){
             // Since your backend returns JSON, parse the response
             setResults([]);
             const data = await response.json();
+            setLocked(false)
             setResults(data)
             setLocked(false)
             // Update state with the received list of attractions
