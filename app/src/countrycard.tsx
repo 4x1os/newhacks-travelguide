@@ -25,7 +25,6 @@ function Card(props : cardProps){
         if (props.selectedCountry) return
         props.onCardSelect(props.title)
     }
-    
     const unlockedState = "bg-slate-200 shadow-md overflow-hidden hover:scale-[1.02] ease-out transition-all duration-300 hover:shadow-2x1";
     const lockedState = "bg-slate-200 shadow-md overflow-hidden brightness-90";
     return(

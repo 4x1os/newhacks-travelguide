@@ -1,15 +1,19 @@
 "use client"
 import { useState } from "react";
 
-function Search(){
+interface searchCallback {
+    setQuery: (tag: string) => void;
+    freeze: boolean
+}
+
+function Search(props : searchCallback){
     const [searchTerm, setSearchTerm] = useState('');
-
-
     const handleSubmission = (e : React.FormEvent)=>{
+        if (props.freeze){return}
         e.preventDefault();
         if (searchTerm.trim() !== ''){
-            const query = searchTerm.trim()
-            
+            const query = searchTerm.trim()          
+            props.setQuery(query)
             setSearchTerm('')
         }
     }

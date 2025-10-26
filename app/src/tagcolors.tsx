@@ -3,6 +3,19 @@ export interface TagStyle {
   bgColor: string;
 }
 
+const TAG_PALETTE: TagStyle[] = [
+    { textColor: "text-slate-700", bgColor: "bg-blue-100" },
+    { textColor: "text-slate-700", bgColor: "bg-green-100" },
+    { textColor: "text-slate-700", bgColor: "bg-purple-100" },
+    { textColor: "text-slate-700", bgColor: "bg-yellow-100" },
+    { textColor: "text-slate-700", bgColor: "bg-pink-100" },
+    { textColor: "text-slate-700", bgColor: "bg-indigo-100" },
+];
+
+const getRandomTagStyle = (): TagStyle => {
+    const randomIndex = Math.floor(Math.random() * TAG_PALETTE.length);
+    return TAG_PALETTE[randomIndex];
+};
 
 export const TAG_STYLES: Record<string, TagStyle> = {
   "Hot": {
@@ -22,12 +35,8 @@ export const TAG_STYLES: Record<string, TagStyle> = {
     bgColor: "bg-indigo-300",
   },
 
-  "DEFAULT": {
-    textColor: "text-gray-100",
-    bgColor: "bg-zinc-500",
-  },
 };
 
 export function getTagStyle(tagName: string): TagStyle {
-  return TAG_STYLES[tagName] || TAG_STYLES["DEFAULT"];
+  return TAG_STYLES[tagName] || getRandomTagStyle();
 }
